@@ -15,7 +15,8 @@ public class ProductDAO {
 
 	public ArrayList getProductList() {
 		// Mysql DB Connection URL
-        String url = "jdbc:mysql://localhost:3306/classicmodels?useUnicode=true&characterEncoding=utf-8";
+//        String url = "jdbc:mysql://localhost:3306/classicmodels?useUnicode=true&characterEncoding=utf-8";
+        String url = "jdbc:mysql://localhost:3306/classicmodels";
 		String username = "root";
 		String password = "1234";
 		Connection conn = null;
@@ -24,7 +25,8 @@ public class ProductDAO {
 		ArrayList list = new ArrayList();
 		String query = "SELECT productCode  as  code , quantityInStock  as  quantity, productDescription  as  description,  buyPrice  as  price  FROM  classicmodels.Products  where buyPrice>=90.0 ";
 		try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, username, password);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query);
